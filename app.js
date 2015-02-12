@@ -15,6 +15,9 @@ var project = require('./routes/project');
 
 var app = express();
 
+var palette = require('./routes/palette');
+
+
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -40,6 +43,8 @@ app.get('/', index.view);
 app.get('/project/:id', project.projectInfo);
 // Example route
 // app.get('/users', user.list);
+app.get('/palette/', palette.sendColor);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
